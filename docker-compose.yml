@@ -1,0 +1,18 @@
+services:
+  erp-db:
+    image: mariadb:10.9
+    container_name: mfg_erp_source
+    environment:
+      MARIADB_ROOT_PASSWORD: devpass
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3307:3306"
+    volumes:
+      # 이 compose 파일과 같은 위치에 output/erp/erp_dump.sql이 있어야 함
+      - ./output/erp:/docker-entrypoint-initdb.d:ro
+      - erp_data:/var/lib/mysql
+
+volumes:
+  erp_data:
