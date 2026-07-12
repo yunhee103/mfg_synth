@@ -1,13 +1,13 @@
 # 4단계 분석 스프린트 가이드
 
-대상: analysis/queries/의 쿼리 9본 (Q5는 ETL 품질 리포트로 대체 - 판단 3.6)
+대상: queries/의 쿼리 9본 (Q5는 ETL 품질 리포트로 대체 - 판단 3.6)
 기간: 2일.
 
 ## 실행 방법
 
 DBeaver에서 mfg_dw 접속 후 파일을 열어 블록 단위로 실행하거나:
 
-    Get-Content analysis/queries/07_납기준수.sql -Raw |
+    Get-Content queries/07_납기준수.sql -Raw |
       docker exec -i mfg_erp_source mariadb -uroot -pdevpass mfg_dw
 
 ## 권장 순서 (증상 -> 원인 사슬)
