@@ -37,7 +37,7 @@ def part_a_inventory(conn: pymysql.Connection) -> None:
     """패스 1: ERP 테이블 인벤토리 (행 수, 기간, 샘플)."""
     print(DIVIDER)
     print("[A] ERP 테이블 인벤토리 - 표를 옮겨 적고 각 테이블이")
-    print("    '무엇에 대한 기록'인지 한 줄씩 네 말로 써라.")
+    print("    '무엇에 대한 기록'인지 작성하시오")
     print(DIVIDER)
     tables = q(conn, "SHOW TABLES").iloc[:, 0].tolist()
     date_cols = {
@@ -61,7 +61,7 @@ def part_b_relations(conn: pymysql.Connection) -> None:
     """패스 2: 참조 무결성 체크. 0이 아닌 값이 나오는 곳이 단서다."""
     print("\n" + DIVIDER)
     print("[B] 참조 관계 체크 - 각 행의 숫자가 0인지 아닌지 보고,")
-    print("    0이 아닌 곳은 위화감 목록에 적어라.")
+    print("    0이 아닌 곳은 위화감 목록에 적으시오.")
     print(DIVIDER)
     checks = [
         ("수주상세 -> 수주헤더 고아",
@@ -93,7 +93,7 @@ def part_c_boundary(conn: pymysql.Connection, data_dir: Path) -> None:
     """패스 3: 시스템 경계 체크 (ERP vs MES vs Excel)."""
     print("\n" + DIVIDER)
     print("[C] 시스템 경계 체크 - 아래 출력들을 나란히 보고")
-    print("    무엇이 어떻게 다른지 네 말로 기록해라.")
+    print("    무엇이 어떻게 다른지 적으시오.")
     print(DIVIDER)
 
     erp_codes = set(q(conn, "SELECT item_code FROM items")["item_code"])

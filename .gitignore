@@ -2,7 +2,6 @@
 output/
 __pycache__/
 *.pyc
-탐색_워크시트.md
 탐색출력*.txt
 .idea/
 .env
