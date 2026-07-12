@@ -216,7 +216,7 @@ def main() -> None:
         part_c_boundary(conn, Path(args.data))
     finally:
         conn.close()
-    part_d_worksheet(Path("탐색_워크시트.md"))
+    part_d_worksheet(Path("docs/탐색_워크시트.md"))
 
 
 
