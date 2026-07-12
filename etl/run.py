@@ -17,6 +17,8 @@ import pandas as pd
 from .common import EtlConfig, QualityReport, connect
 from .dims import DimLoader
 from .facts import FactLoader
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 CHECKS = [
     ("SCD: is_current=1 중복 품목",
