@@ -19,12 +19,12 @@ SELECT yw, avg_ct,
        AVG(avg_ct) OVER (ORDER BY yw ROWS BETWEEN 3 PRECEDING AND CURRENT ROW)
            AS ma_4w
 FROM (
-    SELECT CONCAT(dd.year, '-W', LPAD(dd.day_of_week * 0 + WEEK(dd.full_date, 3), 2, '0')) AS yw,
+    SELECT DATE_FORMAT(dd.full_date, '%x-W%v') AS yw,
            AVG(f.cycle_time_s) AS avg_ct
     FROM fact_production_performance f
     JOIN dim_equipment de ON f.equip_key = de.equip_key
     JOIN dim_date dd ON f.date_key = dd.date_key
-    WHERE de.equip_code = '__여기에_설비코드__' AND f.cycle_time_s IS NOT NULL
+    WHERE de.equip_code = 'EQ-03' AND f.cycle_time_s IS NOT NULL
     GROUP BY yw
 ) t
 ORDER BY yw;
@@ -36,7 +36,7 @@ FROM fact_production_performance f
 JOIN dim_equipment de ON f.equip_key = de.equip_key
 JOIN dim_item di ON f.item_key = di.item_key
 JOIN dim_date dd ON f.date_key = dd.date_key
-WHERE de.equip_code = '__여기에_설비코드__' AND f.cycle_time_s IS NOT NULL
+WHERE de.equip_code = 'EQ-03' AND f.cycle_time_s IS NOT NULL
 GROUP BY di.item_code_erp, dd.year, dd.month
 HAVING COUNT(*) >= 3
 ORDER BY di.item_code_erp, dd.year, dd.month;
